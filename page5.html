@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 5</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: auto; }
+        .button { display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-align: center; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+        .button:hover { background-color: #45a049; }
+        .congratulations { text-align: center; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Here's Your Date Plan!</h1>
+        <p>Date: <span id="dateDisplay"></span></p>
+        <p>Food: <span id="foodDisplay"></span></p>
+        <p>Activity: <span id="activityDisplay"></span></p>
+
+	<p><br><br>Screenshot mo to mahal o tawag ikaw sakin tapos screenshare mo po para makita ko din hehehe aylabyuuuu</p>
+
+        <a href="https://www.facebook.com/System.out.printlnJames/" class="button" id="saveButton">Contact James</a>
+    </div>
+
+    <script>
+        // Retrieve data from localStorage
+        document.getElementById('dateDisplay').innerText = localStorage.getItem('date');
+        document.getElementById('foodDisplay').innerText = localStorage.getItem('food');
+        document.getElementById('activityDisplay').innerText = localStorage.getItem('activity');
+
+        // Save data to notepad
+        document.getElementById('saveButton').addEventListener('click', function() {
+            var date = localStorage.getItem('date');
+            var food = localStorage.getItem('food');
+            var activity = localStorage.getItem('activity');
+            var notepad = document.createElement('a');
+            notepad.href = 'data:text/plain,' + encodeURIComponent('Date: ' + date + '\nFood: ' + food + '\nActivity: ' + activity);
+            notepad.download = 'date_plan.txt';
+            document.body.appendChild(notepad);
+            notepad.click();
+            notepad.remove();
+        });
+    </script>
+
+<img src="iloveyoulykako.png">
+</body>
+</html

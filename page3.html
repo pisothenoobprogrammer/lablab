@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 3</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: auto; }
+        .button { display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-align: center; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+        .button:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>What Should We Eat?</h1>
+        <p>Choose a food:</p>
+        <select id="foodSelect">
+            <option value="Pizza">Pizza</option>
+            <option value="Sushi">Sushi</option>
+            <option value="Burger">Burger</option>
+        </select>
+        <a href="page4.html" class="button" id="continueButton3">Continue</a>
+    </div>
+
+    <script>
+        document.getElementById('continueButton3').addEventListener('click', function() {
+            var food = document.getElementById('foodSelect').value;
+            localStorage.setItem('food', food);
+        });
+    </script>
+</body>
+</html>

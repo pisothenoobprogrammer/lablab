@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 4</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: auto; }
+        .button { display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-align: center; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+        .button:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>What Should We Do?</h1>
+        <p>Choose an activity:</p>
+        <select id="activitySelect">
+            <option value="Netflix">Netflix</option>
+            <option value="Bowling">Bowling</option>
+            <option value="Hiking">Hiking</option>
+        </select>
+        <a href="page5.html" class="button" id="continueButton4">Continue</a>
+    </div>
+
+    <script>
+        document.getElementById('continueButton4').addEventListener('click', function() {
+            var activity = document.getElementById('activitySelect').value;
+            localStorage.setItem('activity', activity);
+        });
+    </script>
+</body>
+</html>
