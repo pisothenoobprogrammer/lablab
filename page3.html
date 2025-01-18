@@ -15,24 +15,36 @@
     <div class="container">
         <h1>What Should We Eat?</h1>
         <p>Choose a food:</p>
-        <input type="radio" id="foodSelect" name="foodSelect" value="Migoreng">
-	<label for="fooodSelect">Migoreng</label><br>
-	<input type="radio" id="foodSelect" name="foodSelect" value="Munchkins">
-	<label for="fooodSelect">Munchkins</label><br>
-	<input type="radio" id="foodSelect" name="foodSelect" value="Kalamansi Pancit Canton">
-	<label for="fooodSelect">Kalamansi Pancit Canton</label><br>
-	<input type="radio" id="foodSelect" name="foodSelect" value="Mcdo Burger">
-	<label for="fooodSelect">Mcdo Burger</label><br>
-	<input type="radio" id="foodSelect" name="foodSelect" value="Lays">
-	<label for="fooodSelect">Lays</label><br>
+        <input type="radio" id="migoreng" name="foodSelect" value="Migoreng">
+	<label for="migoreng">Migoreng</label><br>
+	<input type="radio" id="munchkins" name="foodSelect" value="Munchkins">
+	<label for="munchkins">Munchkins</label><br>
+	<input type="radio" id="kalamansi" name="foodSelect" value="Kalamansi Pancit Canton">
+	<label for="kalamansi">Kalamansi Pancit Canton</label><br>
+	<input type="radio" id="mcdoburger" name="foodSelect" value="Mcdo Burger">
+	<label for="mcdoburger">Mcdo Burger</label><br>
+	<input type="radio" id="lays" name="foodSelect" value="Lays">
+	<label for="lays">Lays</label><br>
         <a href="page4.html" class="button" id="continueButton3">Continue</a>
     </div>
 
     <script>
         document.getElementById('continueButton3').addEventListener('click', function() {
-            var food = document.getElementById('foodSelect').value;
-            localStorage.setItem('food', food);
-        });
+        var selectedFood;
+        var foodOptions = document.getElementsByName('foodSelect');
+        for (var i = 0; i < foodOptions.length; i++) {
+            if (foodOptions[i].checked) {
+                selectedFood = foodOptions[i].value;
+                break;
+            }
+        }
+        if (selectedFood) {
+            localStorage.setItem('food', selectedFood);
+            window.location.href = 'page4.html';
+        } else {
+            alert('Please select a food option.');
+        }
+    });
     </script>
 <img src="iloveyoulykako.png">
 </body>

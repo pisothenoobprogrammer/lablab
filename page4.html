@@ -15,24 +15,36 @@
     <div class="container">
         <h1>What Should We Do?</h1>
         <p>Choose an activity:</p>
-        <input type="radio" id="activitySelect" name="activitySelect" value="Watch Squid Game">
-	<label for="fooodSelect">Watch Squid Game</label><br>
-	<input type="radio" id="activitySelect" name="activitySelect" value="Watch Walking Dead">
-	<label for="fooodSelect">Watch Walking Dead</label><br>
-	<input type="radio" id="activitySelect" name="activitySelect" value="Watch Lion King">
-	<label for="fooodSelect">Watch Lion King</label><br>
-	<input type="radio" id="activitySelect" name="activitySelect" value="Play ML">
-	<label for="fooodSelect">Play ML</label><br>
-	<input type="radio" id="activitySelect" name="activitySelect" value="Play Terraria">
-	<label for="fooodSelect">Play Terraria</label><br>
-        <a href="page5.html" class="button" id="continueButton4">Continue</a>
-    </div>
+        <input type="radio" id="squidgame" name="activitySelect" value="Watch Squid Game">
+    	<label for="squidgame">Watch Squid Game</label><br>
+    	<input type="radio" id="walkingdead" name="activitySelect" value="Watch Walking Dead">
+    	<label for="walkingdead">Watch Walking Dead</label><br>
+    	<input type="radio" id="lionking" name="activitySelect" value="Watch Lion King">
+    	<label for="lionking">Watch Lion King</label><br>
+    	<input type="radio" id="ml" name="activitySelect" value="Play ML">
+    	<label for="ml">Play ML</label><br>
+    	<input type="radio" id="terraria" name="activitySelect" value="Play Terraria">
+    	<label for="terraria">Play Terraria</label><br>
+    	<a href="page5.html" class="button" id="continueButton4">Continue</a>
+</div>
 
-    <script>
-        document.getElementById('continueButton4').addEventListener('click', function() {
-            var activity = document.getElementById('activitySelect').value;
-            localStorage.setItem('activity', activity);
-        });
+<script>
+    document.getElementById('continueButton4').addEventListener('click', function() {
+        var selectedActivity;
+        var activityOptions = document.getElementsByName('activitySelect');
+        for (var i = 0; i < activityOptions.length; i++) {
+            if (activityOptions[i].checked) {
+                selectedActivity = activityOptions[i].value;
+                break;
+            }
+        }
+        if (selectedActivity) {
+            localStorage.setItem('activity', selectedActivity);
+            window.location.href = 'page5.html';
+        } else {
+            alert('Please select an activity option.');
+        }
+    });
     </script>
 <img src="iloveyoulykako.png">
 </body>
