@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Happy Birthday</title>
+</head>
+<body>
+  <h2>For Lyka</h2>
+  <p> You need to answer this for me to know that you are the one that I know and I love.
+  <form id="quizForm"></form>
+  <button onclick="submit()">Submit</button>
+
+  <script>
+    const questions = [
+      {
+        question: "What is your name?",
+        choices: ["J***S H***Y C******T", "I*****X", "L**A", "T***O"],
+        correctIndex: 2
+      },
+      {
+        question: "How old are you?",
+        choices: ["*8", "*3", "*6", "*7"],
+        correctIndex: 3
+      },
+      {
+        question: "Do you love me?",
+        choices: ["Yes", "No", "Maybe", "Only on day-offs"],
+        correctIndex: 0
+      },
+      {
+        question: "What is your favorite color?",
+        choices: ["Black & Yellow", "White & Black", "Black & Blue", "White & Pink"],
+        correctIndex: 2
+      },
+      {
+        question: "What is your favorite food?",
+        choices: ["Migoreng", "Avocado", "Lucky Me", "Pancit Canton"],
+        correctIndex: 0
+      },
+      {
+        question: "Where is my favorite mole of you?",
+        choices: ["Near eyes", "Chin", "Shoulder", "Back"],
+        correctIndex: 1
+      },
+      {
+        question: "Our recent watch movie?",
+        choices: ["National Geographic - Lions", "One Piece", "The Walking Dead", "Valley of the Lost Ants"],
+        correctIndex: 3
+      },
+      {
+        question: "Where we first met?",
+        choices: ["Jollibee", "KFC", "Mcdo", "SM Moa"],
+        correctIndex: 2
+      },
+      {
+        question: "When will you come to me?",
+        choices: ["Next year", "Next month", "Next week", "Tomorrow"],
+        correctIndex: 0
+      },
+      {
+        question: "Do you that i really really love you?",
+        choices: ["Yes", "No", "Maybe", "Yes na yes na yes na yes na yes sobrang sobraaaaa"],
+        correctIndex: 3
+      },
+    ];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function generateQuiz() {
+      const shuffled = shuffle([...questions]).slice(0, 10);
+      const quizForm = document.getElementById("quizForm");
+      shuffled.forEach((q, idx) => {
+        const qElem = document.createElement("div");
+        qElem.innerHTML = `<p>${idx + 1}. ${q.question}</p>`;
+        q.choices.forEach((choice, i) => {
+          qElem.innerHTML += `
+            <label>
+              <input type="radio" name="q${idx}" value="${i}">
+              ${choice}
+            </label><br>`;
+        });
+        quizForm.appendChild(qElem);
+      });
+      window.quizData = shuffled; // Store for scoring
+    }
+
+    function submit() {
+      let score = 0;
+      const form = document.getElementById("quizForm");
+      window.quizData.forEach((q, idx) => {
+        const answer = form.querySelector(`input[name="q${idx}"]:checked`);
+        if (answer && parseInt(answer.value) === q.correctIndex) {
+          score++;
+        }
+      });
+
+      if (score === 10) {
+        window.location.href = "aylabyu.html";
+      } else {
+        alert(`You scored ${score}/10. Try again!`);
+      }
+    }
+
+    generateQuiz();
+  </script>
+</body>
+</html>
